@@ -1,4 +1,4 @@
-export default [
+const CartItems = [
     {
       id: 1,
       title: 'Book 1',
@@ -36,3 +36,4 @@ export default [
     }
   ];
   
+  export default CartItems
