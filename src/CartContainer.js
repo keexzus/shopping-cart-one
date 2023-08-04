@@ -38,7 +38,7 @@ const CartContainer = () => {
           </h4>
         </div>
         <button className='btn clear-btn' onClick={clearCart}>
-          clear cart
+          trash whole cart
         </button>
 
      
