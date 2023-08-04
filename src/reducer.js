@@ -36,7 +36,7 @@ const reducer = (state, action) => {
 if (action.type === 'RESET_QUANTITIES') {
   const resetCart = state.cart.map((cartItem) => ({
     ...cartItem,
-    amount: 1,
+    amount: 0,
   }));
   return { ...state, cart: resetCart };
 }
