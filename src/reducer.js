@@ -18,14 +18,14 @@ const reducer = (state, action) => {
       return { ...state, cart: tempCart }
     }
     if (action.type === 'DECREASE') {
-      let tempCart = state.cart
-        .map((cartItem) => {
+      let tempCart = state.cart.map((cartItem) => {
           if (cartItem.id === action.payload) {
-            return { ...cartItem, amount: cartItem.amount - 1 }
+            const updatedAmount = cartItem.amount - 1;
+            return { ...cartItem, amount : updatedAmount >= 0 ? updatedAmount : 0 };
           }
           return cartItem
         })
-        .filter((cartItem) => cartItem.amount !== 0)
+        .filter((cartItem) => cartItem.amount !== 0);
       return { ...state, cart: tempCart }
     }
 
@@ -77,12 +77,13 @@ if (action.type === 'RESET_QUANTITIES') {
               return { ...cartItem, amount: cartItem.amount + 1 }
             }
             if (action.payload.type === 'dec') {
-              return { ...cartItem, amount: cartItem.amount - 1 }
+              const updatedAmount = cartItem.amount -1;
+              return { ...cartItem, amount: updatedAmount >= 0 ? updatedAmount : 0 }
             }
           }
           return cartItem
         })
-        .filter((cartItem) => cartItem.amount !== 0)
+        // .filter((cartItem) => cartItem.amount !== 0)
       return { ...state, cart: tempCart }
     }
     throw new Error('no matching action type')
